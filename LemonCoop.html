@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>LemonCoop | Limonadas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="diseño.css">
+</head>
+
+<body data-sabor="clasica">
+
+    <header>
+        <nav class="wrap" aria-label="Principal">
+            <a class="logo" href="#inicio">🍋 Lemon<span>Coop</span></a>
+            <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <ul class="links" id="links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#limonadas">Limonadas</a></li>
+                <li><a href="#sabores">Sabores</a></li>
+                <li><a href="#por-que-lemoncoop">Por qué escoger LemonCoop</a></li>
+                <li><a href="#pedido">Pedido <span class="cart-badge" id="cartCount">0</span></a></li>
+                <li><a href="#contactos">Contactos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio">
+            <div class="wrap hero-container">
+                <div class="hero-info">
+                    <h1>LemonCoop</h1>
+                    <p class="subtitle">Limonadas frescas y deliciosas hechas con el corazón para compartir</p>
+                    <p>El sabor de siempre: limón fresco, hielo y el punto justo de dulzor. Perfecta para cualquier
+                        tarde.</p>
+                    <p>¡Hecho con amor por el equipo de LemonCoop!</p>
+                    <div class="cta">
+                        <a class="btn" href="#limonadas">Ver limonadas</a>
+                        <a class="btn alt" href="#pedido">Ir al pedido</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="Logo.jpeg" alt="Logo LemonCoop" class="logo-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. LIMONADAS -->
+        <section id="limonadas">
+            <div class="wrap hero-simple">
+                <h2 id="titulo">Limonada clásica</h2>
+                <p id="desc">El sabor de siempre: limón fresco, hielo y el punto justo de dulzor. Perfecta para
+                    cualquier tarde.</p>
+                <div class="picker" role="radiogroup" aria-label="Elige tu sabor">
+                    <button class="chip" role="radio" aria-checked="true" data-s="clasica">🍋 Clásica</button>
+                    <button class="chip" role="radio" aria-checked="false" data-s="fresa">🍓 Fresa</button>
+                    <button class="chip" role="radio" aria-checked="false" data-s="hierbabuena">🌿 Hierbabuena</button>
+                </div>
+                <div class="cta">
+                    <button class="btn" id="addHeroBtn">Agregar al Carrito</button>
+                    <a class="btn alt" href="#sabores">Ver todos los sabores</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sabores">
+            <div class="wrap">
+                <h2>Nuestros Sabores</h2>
+                <p>Elige tu favorito, ajusta la cantidad fácilmente e inclúyelo en tu lista de compras.</p>
+                <div class="grid">
+
+                    <!-- Tarjeta Clásica -->
+                    <article class="card-sabor" style="--accent-card: #f5c518; --bg-card: #fffdf0;">
+                        <div class="badge">Popular</div>
+                        <div class="card-icon">🍋</div>
+                        <h3>Limonada Clásica</h3>
+                        <p>Limón, hielo y dulzor equilibrado. La preferida por la familia.</p>
+                        <div class="card-footer">
+                            <div class="qty-picker">
+                                <button class="qty-btn" onclick="adjustQty('clasica', -1)">-</button>
+                                <span class="qty-val" id="qty-clasica">1</span>
+                                <button class="qty-btn" onclick="adjustQty('clasica', 1)">+</button>
+                            </div>
+                            <button class="btn sm btn-add-card" data-key="clasica">Agregar</button>
+                        </div>
+                    </article>
+
+                    <!-- Tarjeta Fresa -->
+                    <article class="card-sabor" style="--accent-card: #e0345a; --bg-card: #fff0f3;">
+                        <div class="badge">Especial</div>
+                        <div class="card-icon">🍓</div>
+                        <h3>Limonada con Fresa</h3>
+                        <p>Un toque frutal y dulce que le da color y alegría a cada sorbo.</p>
+                        <div class="card-footer">
+                            <div class="qty-picker">
+                                <button class="qty-btn" onclick="adjustQty('fresa', -1)">-</button>
+                                <span class="qty-val" id="qty-fresa">1</span>
+                                <button class="qty-btn" onclick="adjustQty('fresa', 1)">+</button>
+                            </div>
+                            <button class="btn sm btn-add-card" data-key="fresa">Agregar</button>
+                        </div>
+                    </article>
+
+                    <!-- Tarjeta Hierbabuena -->
+                    <article class="card-sabor" style="--accent-card: #17805c; --bg-card: #f0fff8;">
+                        <div class="badge">Refrescante</div>
+                        <div class="card-icon">🌿</div>
+                        <h3>Limonada con Hierbabuena</h3>
+                        <p>Fresca y aromática, ideal para los días con más calor.</p>
+                        <div class="card-footer">
+                            <div class="qty-picker">
+                                <button class="qty-btn" onclick="adjustQty('hierbabuena', -1)">-</button>
+                                <span class="qty-val" id="qty-hierbabuena">1</span>
+                                <button class="qty-btn" onclick="adjustQty('hierbabuena', 1)">+</button>
+                            </div>
+                            <button class="btn sm btn-add-card" data-key="hierbabuena">Agregar</button>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. POR QUÉ ESCOGER LEMONCOOP -->
+        <section id="por-que-lemoncoop">
+            <div class="wrap">
+                <h2>¿Por qué escoger LemonCoop?</h2>
+                <p>Somos un emprendimiento de limonadas hecho para compartir. Queremos que cada vaso refresque tu día.
+                </p>
+                <p>Nuestra misión es: ofrecerte una buena experiencia para tu paladar degustando una limonada fresca y
+                    natural.</p>
+                <div class="about">
+                    <div>
+                        <h3>Para todos</h3>
+                        <p>Sabores sencillos que gustan a niños, jóvenes y adultos.</p>
+                    </div>
+                    <div>
+                        <h3>Frescas</h3>
+                        <p>Limón, fruta y hierbas frescas como protagonistas.</p>
+                    </div>
+                    <div>
+                        <h3>Hechas en equipo</h3>
+                        <p>Cooperamos para que cada limonada tenga la mejor calidad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. PEDIDO Y MÚLTIPLES ÓRDENES -->
+        <section id="pedido">
+            <div class="wrap">
+                <h2>Generar y Gestionar Pedidos</h2>
+                <p>Añade limonadas al carrito, ingresa los datos del cliente y confirma. Puedes registrar varios pedidos
+                    distintos.</p>
+
+                <!-- Carrito Temporal -->
+                <div class="cart-box">
+                    <h3>Selección Actual</h3>
+                    <ul class="cart-items" id="cartList">
+                        <li class="empty-cart">El carrito está vacío. ¡Agrega limonadas desde las secciones superiores!
+                        </li>
+                    </ul>
+
+                    <!-- Formulario para Registrar Pedido -->
+                    <form id="formPedido" class="order-form">
+                        <h4>Datos del Pedido</h4>
+                        <div class="form-group">
+                            <label for="nombre">Nombre de quien recibe:</label>
+                            <input type="text" id="nombre" placeholder="Ej: Maria López" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="direccion">Dirección / Dirección de Entrega:</label>
+                            <input type="text" id="direccion" placeholder="Ej: Av. Principal #123" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="notas">Notas especiales (Opcional):</label>
+                            <textarea id="notas" rows="2" placeholder="Ej: Sin hielo, azúcar reducida..."></textarea>
+                        </div>
+                        <button class="btn" type="submit">Guardar e Ingresar Pedido</button>
+                    </form>
+                </div>
+
+                <!-- Historial de Pedidos Registrados -->
+                <div class="orders-history">
+                    <h3>Historial de Pedidos Registrados (<span id="ordersCount">0</span>)</h3>
+                    <div id="ordersContainer">
+                        <p class="empty-cart">No hay pedidos registrados aún.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 6. CONTACTOS -->
+        <section id="contactos">
+            <!-- 6. CONTACTOS (CON INSTAGRAM INTEGRADO) -->
+            <section id="contactos">
+                <div class="wrap">
+                    <h2>Contáctanos</h2>
+                    <p>¿Tienes dudas, eventos o deseas hacer pedidos especiales? ¡Comunícate con nosotros o visítanos en
+                        redes sociales!</p>
+
+                    <div class="contact-grid">
+                        <!-- Instagram -->
+                        <a href="https://instagram.com/lemoncoop.sv" target="_blank" rel="noopener noreferrer"
+                            class="contact-card instagram-card">
+                            <div class="contact-icon">📸</div>
+                            <h3>Instagram</h3>
+                            <p>@lemoncoop.sv</p>
+                            <span class="contact-action">Ver Perfil ↗</span>
+                        </a>
+
+                        <!-- WhatsApp / Teléfono -->
+                        <a href="https://wa.me/50377523718" target="_blank" rel="noopener noreferrer"
+                            class="contact-card whatsapp-card">
+                            <div class="contact-icon">💬</div>
+                            <h3>WhatsApp</h3>
+                            <p>+503 7752-3718</p>
+                            <span class="contact-action">Escribir Mensaje ↗</span>
+                        </a>
+
+                        <!-- Ubicación -->
+                        <div class="contact-card">
+                            <div class="contact-icon">📍</div>
+                            <h3>Ubicación</h3>
+                            <p>Apopa, San Salvador, El Salvador</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </main>
+
+    <!-- 7. DERECHOS DE AUTOR -->
+    <footer id="derechos">
+        <div class="wrap">
+            <p>© <span id="year"></span> LemonCoop · Todos los derechos reservados.</p>
+            <p class="copyright-sub">Limonadas hechas con amor e insumos naturales 🍋</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
