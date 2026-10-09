@@ -1,3 +1,26 @@
+const supabaseUrl = 'https://rbfamtpvsjgrxvjvxdar.supabase.co/rest/v1/Pedidos';
+const supabaseKey = 'sb_publishable_5Q_6-l0V0v33K9Y6nN1U8g_YpGfFhQ';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+async function guardarPedidoSupabase(nombre, dirección, notas, carrito) {
+    const { data, error } = await supabase.from('pedidos')
+        .insert([
+            {
+                nombre: nombre,
+                direccion: direccion,
+                notas: notas,
+                productos: carrito
+            }
+        ]);
+
+    if (error) {
+        console.error('Error al guardar en la base de datos:', error);
+        alert('Hubo un problema al registrar tu pedido.');
+    } else {
+        console.log('¡Pedido guardado con éxito!', data);
+    }
+}
+
 const S = {
     clasica: { n: 'Limonada clásica', d: 'El sabor de siempre: limón fresco, hielo y el punto justo de dulzor. Perfecta para cualquier tarde.' },
     fresa: { n: 'Limonada con fresa', d: 'Limón con fresa en un vaso color de rosa. Dulce, frutal y muy divertida.' },
